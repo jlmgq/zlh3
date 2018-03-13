@@ -8,7 +8,7 @@
     <context:component-scan base-package="cn.yingchuang.jboa.sys_positions.service,
                                             cn.yingchuang.jboa.sys_employee.serivce,
                                             cn.yingchuang.jboa.biz_claim_voucher_detail.serivce,
-                                            cn.yingchuang.jboa.biz_claim_voucher"/>
+                                            cn.yingchuang.jboa.biz_claim_voucher.service"/>
     <context:property-placeholder location="classpath:database.properties"/>
     <bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource">
         <property name="driverClassName" value="${jdbc.driver}"/>
@@ -39,7 +39,7 @@
         <property name="basePackage" value="cn.yingchuang.jboa.biz_claim_voucher.dao,
                                             cn.yingchuang.jboa.biz_claim_voucher_detail.dao,
                                             cn.yingchuang.jboa.sys_employee.dao,
-                                            cn.yingchuang.jboa.sys_positions"/>
+                                            cn.yingchuang.jboa.sys_positions.dao"/>
     </bean>
 
     <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="dataSourceTransactionManager">
