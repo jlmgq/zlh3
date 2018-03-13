@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <setting name="autoMappingBehavior" value="FULL"/>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <typeAliases>
+        <package name="cn.yingchuang.jboa.biz_claim_voucher.entity"/>
+        <package name="cn.yingchuang.jboa.biz_claim_voucher_detail.entity"/>
+        <package name="cn.yingchuang.jboa.sys_employee.entity"/>
+        <package name="cn.yingchuang.jboa.sys_positions.entity"/>
+    </typeAliases>
+
+
+    <!-- Continue going here -->
+
+</configuration>

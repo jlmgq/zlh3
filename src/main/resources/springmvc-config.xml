@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:component-scan base-package="cn.yingchuang.jboa.sys_positions.controller,
+                                            cn.yingchuang.jboa.sys_employee,
+                                            cn.yingchuang.jboa.biz_claim_voucher_detail,
+                                            cn.yingchuang.jboa.biz_claim_voucher"/>
+    <mvc:annotation-driven></mvc:annotation-driven>
+    <mvc:resources mapping="/statics/**" location="/statics/"/>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <bean id="theLogger" class="cn.yingchuang.jboa.aop.ControllerLogger"/>
+    <aop:config>
+        <aop:pointcut id="pointCut" expression="execution(* cn.yingchuang.jboa.*.controller.*.*(..))"/>
+        <aop:aspect ref="theLogger">
+            <aop:before method="before" pointcut-ref="pointCut"/>
+            <aop:after-returning method="after" pointcut-ref="pointCut" returning="result"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
