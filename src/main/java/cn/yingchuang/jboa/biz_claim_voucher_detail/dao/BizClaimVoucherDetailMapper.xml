@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yingchuang.jboa.biz_claim_voucher_detail.dao.BizClaimVoucherDetailMapper">
+<resultMap id="bizCVDMapper" type="BizClaimVoucherDetail">
+    <id column="id" property="id"></id>
+    <result column="main_id" property="mainId"></result>
+    <result column="item" property="item"></result>
+    <result column="desc" property="desc"></result>
+    <result column="account" property="account"></result>
+</resultMap>
+<select id="queryAll" resultMap="bizCVDMapper">
+    select * from biz_claim_voucher_detail
+</select>
+
+    <select id="queryClaimDetailByMainId" resultMap="bizCVDMapper">
+        select * from biz_claim_voucher_detail where main_id=#{mainId}
+    </select>
+
+</mapper>
