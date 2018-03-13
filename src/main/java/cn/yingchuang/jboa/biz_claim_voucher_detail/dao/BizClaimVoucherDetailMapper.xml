@@ -18,4 +18,17 @@
         select * from biz_claim_voucher_detail where main_id=#{mainId}
     </select>
 
+    <select id="queryBizClaimDetailByMainId" resultMap="bizCVDMapper">
+        select * from biz_claim_voucher_detail where main_id=#{mainId}
+    </select>
+    <insert id="addBizClaimVoucherDetailByMainId" parameterType="BizClaimVoucherDetail">
+        INSERT INTO `biz_claim_voucher_detail` VALUES(NULL,#{mainId},#{item},#{account},#{desc})
+    </insert>
+    <delete id="deleteClaimDetailById" parameterType="Integer">
+        DELETE  FROM `biz_claim_voucher_detail` WHERE id=#{id}
+    </delete>
+    <delete id="deleteClaimDetailByMainId" parameterType="integer">
+        DELETE  FROM `biz_claim_voucher_detail` WHERE main_id=#{mainId}
+    </delete>
+
 </mapper>

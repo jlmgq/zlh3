@@ -24,4 +24,31 @@ public class BizClaimVoucherDetailServiceImpl implements BizClaimVoucherDetailSe
     public List<BizClaimVoucherDetail> queryClaimDetailByMainId(Integer id) {
         return bizClaimVoucherDetailMapper.queryClaimDetailByMainId(id);
     }
+
+
+
+
+
+    @Override
+    public List<BizClaimVoucherDetail> queryBizClaimDetailByMainId(Integer mainId) {
+
+        return bizClaimVoucherDetailMapper.queryBizClaimDetailByMainId(mainId);
+    }
+
+    @Override
+    public Integer addBizClaimVoucherDetailByMainId(BizClaimVoucherDetail bizClaimVoucherDetail)
+    {
+        return bizClaimVoucherDetailMapper.addBizClaimVoucherDetailByMainId(bizClaimVoucherDetail);
+    }
+
+    @Override
+    public Integer deleteClaimDetailById(Integer id) {
+        return bizClaimVoucherDetailMapper.deleteClaimDetailById(id);
+    }
+
+    @Override
+    public Integer deleteClaimDetailByMainId(Integer mainId) {
+
+        return bizClaimVoucherDetailMapper.deleteClaimDetailByMainId(mainId);
+    }
 }

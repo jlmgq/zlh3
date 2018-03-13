@@ -15,18 +15,18 @@ public interface ClaimEmployeeVoService {
     PageUtil<ClaimEmployeeVo> queryClaimEmployeeVoByStatus(Integer pageNum,Integer pageSize,String status);
     /**
      *根据总经理的审核状态，查询所有给财务查阅和操作
-     * @param status
+     * @param CheckGM
      * @return
      */
 
-    PageUtil<ClaimEmployeeVo> queryClaimEmployeeVoByCheckGM(Integer pageName,Integer pageSize,String status);
+    PageUtil<ClaimEmployeeVo> queryClaimEmployeeVoByCheckGM(Integer pageName,Integer pageSize,String CheckGM);
 
     /**
      *  根据部门经理的审核状态 和金额>5000 查询所有 给总经理查看和操作
-     * @param status
+     * @param CheckDM
      * @return
      */
 
-    PageUtil<ClaimEmployeeVo> queryClaimEmployeeVoByCheckDMAndMoney(Integer pageName,Integer pageSize,String status);
+    PageUtil<ClaimEmployeeVo> queryClaimEmployeeVoByCheckDMAndMoney(Integer pageName,Integer pageSize,String CheckDM);
 
 }

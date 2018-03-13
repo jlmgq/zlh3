@@ -23,4 +23,17 @@ public interface BizClaimVoucherDetailMapper {
      * @return
      */
     List<BizClaimVoucherDetail> queryAll();
+
+
+
+
+
+    //    通过mainId查小表
+    public List<BizClaimVoucherDetail> queryBizClaimDetailByMainId(Integer mainId);
+    //    增加一条小表
+    public Integer addBizClaimVoucherDetailByMainId(BizClaimVoucherDetail bizClaimVoucherDetail);
+    //    删除一条小表
+    public Integer deleteClaimDetailById(Integer id);
+    //    删除mainId一样的小表
+    public Integer deleteClaimDetailByMainId(Integer mainId);
 }
