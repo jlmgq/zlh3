@@ -17,6 +17,12 @@ import java.util.List;
 @ContextConfiguration("classpath:applicationContext.xml")
 public class ClaimEmployeeVoServiceImplTest {
     @Test
+    public void queryClaimEmployeeVoById() throws Exception {
+       ClaimEmployeeVo claimEmployeeVo = claimEmployeeVoService.queryClaimEmployeeVoById(1);
+        System.out.println(claimEmployeeVo);
+    }
+
+    @Test
     public void queryClaimEmployeeVoByStatus() throws Exception {
         PageUtil<ClaimEmployeeVo> pageUtil = claimEmployeeVoService.queryClaimEmployeeVoByStatus(1, 4, "新建");
         List<ClaimEmployeeVo> list = pageUtil.getRows();

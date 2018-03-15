@@ -1,5 +1,7 @@
 package cn.yingchuang.jboa.biz_claim_voucher.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.Date;
 
 /**
@@ -9,6 +11,7 @@ public class BizClaimVoucher {
     private Integer id,createSn;
     private Double totalAccount;
     private String event,status,checkDm,checkGm,checkFa;
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     @Override

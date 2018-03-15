@@ -2,6 +2,7 @@ package cn.yingchuang.jboa.biz_claim_voucher.service;
 
 import cn.yingchuang.jboa.biz_claim_voucher.entity.ClaimEmployeeVo;
 import cn.yingchuang.jboa.command.util.PageUtil;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * Created by 祖龙浩 on 2018/3/13.
@@ -19,7 +20,7 @@ public interface ClaimEmployeeVoService {
      * @return
      */
 
-    PageUtil<ClaimEmployeeVo> queryClaimEmployeeVoByCheckGM(Integer pageName,Integer pageSize,String CheckGM);
+    PageUtil<ClaimEmployeeVo> queryClaimEmployeeVoByCheckGM(Integer pageNum,Integer pageSize,String CheckGM);
 
     /**
      *  根据部门经理的审核状态 和金额>5000 查询所有 给总经理查看和操作
@@ -27,6 +28,22 @@ public interface ClaimEmployeeVoService {
      * @return
      */
 
-    PageUtil<ClaimEmployeeVo> queryClaimEmployeeVoByCheckDMAndMoney(Integer pageName,Integer pageSize,String CheckDM);
+    PageUtil<ClaimEmployeeVo> queryClaimEmployeeVoByCheckDMAndMoney(Integer pageNum,Integer pageSize,String CheckDM);
+
+
+
+    /**
+     * 按报销单Id查询报销单及填写用户的基本信息
+     * @param id
+     * @return
+     */
+    ClaimEmployeeVo queryClaimEmployeeVoById(@Param("id") Integer id);
+
+    /**
+     * 根据员工编号查询所有报销单
+     * @return
+     */
+    PageUtil<ClaimEmployeeVo> queryClaimEmployeeVoByCreateSn(Integer pageNum,Integer pageSize,Integer createSn);
+
 
 }

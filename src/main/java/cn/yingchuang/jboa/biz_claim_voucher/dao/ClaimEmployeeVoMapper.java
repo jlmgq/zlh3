@@ -23,15 +23,26 @@ public interface ClaimEmployeeVoMapper {
      * @param status
      * @return
      */
-
     List<ClaimEmployeeVo> queryClaimEmployeeVoByCheckGM(@Param("status") String status);
+
+
     /**
      *  根据部门经理的审核状态 和金额>5000 查询所有 给总经理查看和操作
      * @param status
      * @return
      */
-
-
     List<ClaimEmployeeVo> queryClaimEmployeeVoByCheckDMAndMoney(@Param("status") String status);
 
+    /**
+     * 按报销单Id查询报销单及填写用户的基本信息
+     * @param id
+     * @return
+     */
+    ClaimEmployeeVo queryClaimEmployeeVoById(@Param("id") Integer id);
+
+    /**
+     * 根据员工编号查询所有报销单
+     * @return
+     */
+    List<ClaimEmployeeVo> queryClaimEmployeeVoByCreateSn(@Param("sn")Integer createSn);
 }

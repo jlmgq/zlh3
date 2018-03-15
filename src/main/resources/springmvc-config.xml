@@ -6,9 +6,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <context:component-scan base-package="cn.yingchuang.jboa.sys_positions.controller,
-                                            cn.yingchuang.jboa.sys_employee,
-                                            cn.yingchuang.jboa.biz_claim_voucher_detail,
-                                            cn.yingchuang.jboa.biz_claim_voucher"/>
+                                            cn.yingchuang.jboa.sys_employee.controller,
+                                            cn.yingchuang.jboa.biz_claim_voucher_detail.controller,
+                                            cn.yingchuang.jboa.biz_claim_voucher.controller"/>
     <mvc:annotation-driven></mvc:annotation-driven>
     <mvc:resources mapping="/statics/**" location="/statics/"/>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

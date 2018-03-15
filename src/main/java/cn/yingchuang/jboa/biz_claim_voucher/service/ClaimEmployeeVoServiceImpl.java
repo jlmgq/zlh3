@@ -28,8 +28,6 @@ public class ClaimEmployeeVoServiceImpl implements ClaimEmployeeVoService {
     }
 
     @Override
-
-
     public PageUtil<ClaimEmployeeVo> queryClaimEmployeeVoByCheckGM(Integer pageNum,Integer pageSize,String CheckGM) {
         PageHelper.startPage(pageNum, pageSize);
         List<ClaimEmployeeVo> list = claimEmployeeVoMapper.queryClaimEmployeeVoByCheckGM(CheckGM);
@@ -47,6 +45,20 @@ public class ClaimEmployeeVoServiceImpl implements ClaimEmployeeVoService {
         PageUtil<ClaimEmployeeVo> pageUtil = new PageUtil(pageInfo);
         return pageUtil;
 
+    }
+
+    @Override
+    public ClaimEmployeeVo queryClaimEmployeeVoById(Integer id) {
+        return claimEmployeeVoMapper.queryClaimEmployeeVoById(id);
+    }
+
+    @Override
+    public PageUtil<ClaimEmployeeVo> queryClaimEmployeeVoByCreateSn(Integer pageNum,Integer pageSize,Integer createSn) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<ClaimEmployeeVo> list = claimEmployeeVoMapper.queryClaimEmployeeVoByCreateSn(createSn);
+        PageInfo<ClaimEmployeeVo> pageInfo = new PageInfo<>(list);
+        PageUtil<ClaimEmployeeVo> pageUtil = new PageUtil(pageInfo);
+        return pageUtil;
     }
 
 }

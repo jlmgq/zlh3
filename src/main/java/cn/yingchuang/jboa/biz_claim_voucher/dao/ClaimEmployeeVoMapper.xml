@@ -34,8 +34,21 @@
     <select id="queryClaimEmployeeVoByStatus" resultMap="ceMap" parameterType="String">
       SELECT pos.id AS pos_id,pos.name_cn,bcv.*,em.sn,em.name,em.password,em.position_id,em.status AS em_status
       FROM sys_employee em,sys_positions pos,biz_claim_voucher bcv
-      WHERE em.position_id=pos.id AND bcv.create_sn=em.sn AND bcv.status=#{status}
+      WHERE em.position_id=pos.id AND bcv.create_sn=em.sn AND bcv.check_dm='未审核' AND bcv.status=#{status}
     </select>
+
+    <select id="queryClaimEmployeeVoById" resultMap="ceMap" parameterType="integer">
+        SELECT pos.id AS pos_id,pos.name_cn,bcv.*,em.sn,em.name,em.password,em.position_id,em.status AS em_status
+        FROM sys_employee em,sys_positions pos,biz_claim_voucher bcv
+        WHERE em.position_id=pos.id AND bcv.create_sn=em.sn AND bcv.id=#{id}
+    </select>
+
+    <select id="queryClaimEmployeeVoByCreateSn" resultMap="ceMap" parameterType="integer">
+        SELECT pos.id AS pos_id,pos.name_cn,bcv.*,em.sn,em.name,em.password,em.position_id,em.status AS em_status
+        FROM sys_employee em,sys_positions pos,biz_claim_voucher bcv
+        WHERE em.position_id=pos.id AND bcv.create_sn=em.sn AND bcv.create_sn=#{sn}
+    </select>
+
 
     <select id="queryClaimEmployeeVoByCheckDMAndMoney" resultMap="ceMap">
 
@@ -43,7 +56,7 @@
         FROM sys_employee em,sys_positions pos,biz_claim_voucher bcv
         WHERE em.position_id=pos.id
         AND bcv.create_sn=em.sn
-        AND bcv.`check_dm`=#{status} AND bcv.total_account>=5000
+        AND bcv.`check_dm`=#{status} AND bcv.check_gm='未审核' AND bcv.total_account>=5000
     </select>
 
     <select id="queryClaimEmployeeVoByCheckGM" resultMap="ceMap">
@@ -51,6 +64,7 @@
         FROM sys_employee em,sys_positions pos,biz_claim_voucher bcv
         WHERE em.position_id=pos.id
         AND bcv.create_sn=em.sn
+        AND bcv.check_fa='未审核'
         AND bcv.`check_gm`=#{status}
     </select>
 
