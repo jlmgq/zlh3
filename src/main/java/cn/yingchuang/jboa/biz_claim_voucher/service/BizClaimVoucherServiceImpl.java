@@ -69,6 +69,23 @@ public class BizClaimVoucherServiceImpl implements BizClaimVoucherService {
         return bizClaimVoucherMapper.updateAllStatus(id);
     }
 
+    @Override
+    public Integer deleteBizClaimVoucherById(Integer id) {
+        bizClaimVoucherDetailMapper.deleteClaimDetailByMainId(id);
+
+        return bizClaimVoucherMapper.deleteBizClaimVoucherById(id);
+    }
+
+    /*通过id  修改status 状态*/
+
+    @Override
+    public Integer updataBizClaimVoucherStatusById(Integer id) {
+
+        return bizClaimVoucherMapper.updataBizClaimVoucherStatusById(id);
+    }
+
+
+
 
 
     //    一起添加两个表的方法
@@ -76,15 +93,20 @@ public class BizClaimVoucherServiceImpl implements BizClaimVoucherService {
     public Integer addBizClaimVoucherAndBizClaimVoucherDetails
             (BizClaimVoucher bizClaimVoucher,
              List<BizClaimVoucherDetail> bizClaimVoucherDetails) {
+        System.out.println(bizClaimVoucher);
+        System.out.println(bizClaimVoucherDetails);
 //        需求：事务，先增加大表，返回获得主键，
         Integer n = bizClaimVoucherMapper.addBizClaimVoucher(bizClaimVoucher);
         Integer bizClaimVoucherId = bizClaimVoucher.getId();
 //        然后添加小表把大表主键放进去
         for (BizClaimVoucherDetail bizClaimVoucherDetail : bizClaimVoucherDetails) {
-            bizClaimVoucherDetail.setMainId(bizClaimVoucherId);
-            Integer r = bizClaimVoucherDetailMapper.
-                    addBizClaimVoucherDetailByMainId(
-                    bizClaimVoucherDetail);
+            if(bizClaimVoucherDetail != null){
+                bizClaimVoucherDetail.setMainId(bizClaimVoucherId);
+                Integer r = bizClaimVoucherDetailMapper.
+                        addBizClaimVoucherDetailByMainId(
+                                bizClaimVoucherDetail);
+            }
+
         }
 //        疑问：判断，如果小表添加后的r 的 数和大表数，加起来不对，应该回滚
         return n;

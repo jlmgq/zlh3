@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: 祖龙浩
@@ -14,7 +15,28 @@
     <%@include file="easyuiBasic.jsp"%>
 </head>
 <body>
-审核报销单
+<h3>报销单审核</h3>
+<h5>基本信息</h5>
+编&nbsp;&nbsp;:${claimEmployeeVo.id}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;填写人:${claimEmployeeVo.sysEmployee.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;职&nbsp;&nbsp;位:${claimEmployeeVo.sysEmployee.sysPositions.nameCn}<br/>
+<br/>
+总金额:${claimEmployeeVo.totalAccount}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;填报时间:<fmt:formatDate value="${claimEmployeeVo.createTime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;状&nbsp;&nbsp;态:${claimEmployeeVo.status}<br/>
+<br/>
+---------------------------------------------------------------------------------------------------<br/>
+<h5>报销单明细</h5>
+<table border="1" width="50%">
+    <tr align="center">
+        <td width="30%">项目类别</td>
+        <td width="30%">项目金额</td>
+        <td >费用说明</td>
+    </tr>
+    <c:forEach items="${bcdList}" var="details">
+        <tr align="center">
+            <td>${details.item}</td>
+            <td>${details.account}</td>
+            <td>${details.desc}</td>
+        </tr>
+    </c:forEach>
+</table>
 
 
 
@@ -24,20 +46,23 @@
 </form>
 
 <c:if test="${loginUser.sysPositions.id  eq 2}">
-    <button id="passBtn" onclick="passClaim()">审批通过</button>
-    <button id="refuseBtn" onclick="refuseClaim()">审批拒绝</button>
-    <button id="backToBtn" onclick="backToClaim()">打回</button>
-    <button id="returnBtn" onclick="window.history.go(-1);">返回</button>
+    <button id="passBtn" class="easyui-linkbutton"  onclick="passClaim()">审批通过</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button id="refuseBtn" class="easyui-linkbutton" onclick="refuseClaim()">审批拒绝</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button id="backToBtn" class="easyui-linkbutton" onclick="backToClaim()">打回</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button id="returnBtn" class="easyui-linkbutton" onclick="window.history.go(-1);">返回</button>
 </c:if>
 <c:if test="${loginUser.sysPositions.id  eq 3}">
-    <button id="passBtn" onclick="passClaim()">审批通过</button>
-    <button id="refuseBtn" onclick="refuseClaim()">审批拒绝</button>
-    <button id="backToBtn" onclick="backToClaim()">打回</button>
-    <button id="returnBtn" onclick="window.history.go(-1);">返回</button>
+    <button id="passBtn" class="easyui-linkbutton" class="easyui-linkbutton" onclick="passClaim()">审批通过</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button id="refuseBtn" class="easyui-linkbutton" onclick="refuseClaim()">审批拒绝</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button id="backToBtn" class="easyui-linkbutton" onclick="backToClaim()">打回</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button id="returnBtn" class="easyui-linkbutton" onclick="window.history.go(-1);">返回</button>
 </c:if>
 <c:if test="${loginUser.sysPositions.id  eq 4}">
-    <button id="passBtn" onclick="passClaim()">审批通过</button>
-    <button id="returnBtn" onclick="window.history.go(-1);">返回</button>
+    <button id="passBtn" class="easyui-linkbutton" onclick="passClaim()">审批通过</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button id="returnBtn" class="easyui-linkbutton" onclick="window.history.go(-1);">返回</button>
+</c:if>
+<c:if test="${loginUser.sysPositions.id eq 1}">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="returnBtn" class="easyui-linkbutton" onclick="window.history.go(-1);">返回</button>
 </c:if>
 
 

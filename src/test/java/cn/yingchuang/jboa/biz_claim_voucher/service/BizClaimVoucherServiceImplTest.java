@@ -13,6 +13,19 @@ import javax.annotation.Resource;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:applicationContext.xml")
 public class BizClaimVoucherServiceImplTest {
+    @Test
+    public void updataBizClaimVoucherStatusById() throws Exception {
+        int n =bizClaimVoucherService.updataBizClaimVoucherStatusById(11);
+        System.out.println("n============================>"+n);
+
+    }
+
+    @Test
+    public void deleteBizClaimVoucherById() throws Exception {
+
+        int n = bizClaimVoucherService.deleteBizClaimVoucherById(17);
+        System.out.println("n============================>"+n);
+    }
 
     @Resource
     private BizClaimVoucherService bizClaimVoucherService;

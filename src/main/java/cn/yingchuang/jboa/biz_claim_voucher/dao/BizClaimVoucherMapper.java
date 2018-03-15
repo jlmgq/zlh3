@@ -78,4 +78,17 @@ public interface BizClaimVoucherMapper {
     //    查询一个大表
     public BizClaimVoucher queryBizClaimVoucherById(Integer id);
 
+    /**
+     *
+     * 按id删除大表
+     * @param id
+     * @return
+     */
+    Integer deleteBizClaimVoucherById(@Param("id") Integer id);
+    /*
+    * 按照大表id 修改报销单状态*/
+
+    Integer updataBizClaimVoucherStatusById(@Param("id") Integer id);
+
+
 }

@@ -7,6 +7,14 @@ public class Message {
     private String code;
     private String msg;
 
+    public Message() {
+    }
+
+    public Message(String code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
+
     public  static  Message success(){
         Message message = new Message();
         message.setCode("0000");

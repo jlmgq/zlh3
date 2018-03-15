@@ -2,6 +2,7 @@ package cn.yingchuang.jboa.biz_claim_voucher.service;
 
 import cn.yingchuang.jboa.biz_claim_voucher.entity.BizClaimVoucher;
 import cn.yingchuang.jboa.biz_claim_voucher_detail.entity.BizClaimVoucherDetail;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -79,6 +80,19 @@ public interface BizClaimVoucherService {
      */
     Integer updateAllStatus(Integer id);
 
+    /**
+     * 通过ID 删除一条
+     * @param id
+     * @return
+     */
+    Integer deleteBizClaimVoucherById(@Param("id") Integer id);
+
+    /**
+     * 通过id 更改报销单的 status 为 '审核中'
+     * @param id
+     * @return
+     */
+    Integer updataBizClaimVoucherStatusById(@Param("id") Integer id);
 
 
 }

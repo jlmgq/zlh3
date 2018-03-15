@@ -30,9 +30,6 @@
     </update>
 
 
-
-
-
     <update id="updateCheckDmAndCheckGmById" parameterType="integer">
         update `biz_claim_voucher` set check_dm='审核通过',check_gm='审核通过' where id=#{id}
     </update>
@@ -40,7 +37,7 @@
         update `biz_claim_voucher` set check_dm='审核通过' where id=#{id}
     </update>
 
-    <update id="updateStatusById" >
+    <update id="updateStatusById">
         update `biz_claim_voucher` set status=#{status} where id=#{id}
     </update>
     <update id="updateCheckGmById" parameterType="integer">
@@ -56,8 +53,11 @@
         update `biz_claim_voucher` set status='已付款',check_fa='已付款' where id=#{id}
     </update>
 
+    <delete id="deleteBizClaimVoucherById" parameterType="integer">
+    DELETE from biz_claim_voucher  WHERE id=#{id}
+</delete>
 
-
-
-
+<update id="updataBizClaimVoucherStatusById" parameterType="integer">
+    UPDATE biz_claim_voucher set status='审核中' WHERE id=#{id}
+</update>
 </mapper>
